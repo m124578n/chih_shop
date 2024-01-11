@@ -1,22 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Account(models.Model):
+class Account(AbstractUser):
     
     class Sex(models.IntegerChoices):
         FEMALE = 1, "Female"
         MALE = 2, "Male"
         OTHER = 3, "Other"
-    
-    class Status(models.IntegerChoices):
-        ACTIVATE = 1, "Activate"
-        FREEZE = 2, "Freeze"
-    
-    name = models.CharField(
-        verbose_name="name", 
-        max_lenght=50
-        )
     
     sex = models.PositiveSmallIntegerField(
         verbose_name="sex",
@@ -26,27 +18,18 @@ class Account(models.Model):
     
     phone = models.CharField(
         verbose_name="phone", 
-        max_lenght=10
+        max_length=10
         )
     
     email = models.EmailField(
         verbose_name="email", 
-        max_lenght=254
+        max_length=254
         )
     
     address = models.CharField(
         verbose_name="address", 
-        max_lenght=100
-        )
-    
-    status = models.PositiveSmallIntegerField(
-        verbose_name="status",
-        choices=Status,
-        default=Status.ACTIVATE
+        max_length=100
         )
     
     def __str__(self):
-        return self.name
-    
-    class Meta:
-        de_table = 'account'
+        return self.username
