@@ -7,7 +7,7 @@ from .models import Account
 
 
 @api_view(['GET'])
-def test_create(request):
+def test_check(request):
     user = request.user
     user = Account.objects.filter(username=user).first()
     return Response({'message': user.username})
