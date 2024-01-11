@@ -24,7 +24,7 @@ class Product(models.Model):
         decimal_places=0
         )
     
-    status = models.IntegerField(
+    status = models.PositiveSmallIntegerField(
         verbose_name='status',
         choices=Status,
         default=Status.ON

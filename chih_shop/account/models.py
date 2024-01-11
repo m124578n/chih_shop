@@ -6,9 +6,9 @@ from django.contrib.auth.models import AbstractUser
 class Account(AbstractUser):
     
     class Sex(models.IntegerChoices):
-        FEMALE = 1, "Female"
-        MALE = 2, "Male"
-        OTHER = 3, "Other"
+        FEMALE = 0, "Female"
+        MALE = 1, "Male"
+        OTHER = 2, "Other"
     
     sex = models.PositiveSmallIntegerField(
         verbose_name="sex",
