@@ -8,12 +8,14 @@ class Order(models.Model):
 
     owner = models.ForeignKey(
         Account,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="owner"
         )
     
     shop = models.ForeignKey(
         Account,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="shop"
         )
     
     cart = models.ForeignKey(
@@ -28,7 +30,6 @@ class Order(models.Model):
     
     quantity = models.IntegerField(
         verbose_name='quantity',
-        max_length=3,
         default=1
         )
     
@@ -44,11 +45,18 @@ class OrderHistory(models.Model):
 
     owner = models.ForeignKey(
         Account,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="history_owner"
         )
     
     shop = models.ForeignKey(
         Account,
+        on_delete=models.CASCADE,
+        related_name="history_shop"
+        )
+    
+    cart = models.ForeignKey(
+        CartHistory,
         on_delete=models.CASCADE
         )
     
@@ -65,7 +73,6 @@ class OrderHistory(models.Model):
     
     order_quantity = models.IntegerField(
         verbose_name='order_quantity',
-        max_length=3,
         default=1
         )
     

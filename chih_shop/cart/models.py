@@ -1,6 +1,5 @@
 from django.db import models
 from account.models import Account
-from order.models import Order, OrderHistory
 
 # Create your models here.
 
@@ -30,7 +29,6 @@ class Cart(models.Model):
     
     status = models.PositiveSmallIntegerField(
         verbose_name='status',
-        max_length=1,
         choices=Status,
         default=Status.WAIT
         )
@@ -49,5 +47,20 @@ class CartHistory(models.Model):
         on_delete=models.CASCADE
         )
     
-    # TODO not yet
+    name = models.CharField(
+        verbose_name='name',
+        max_length=50
+        )
+    
+    created_at = models.DateTimeField(
+        verbose_name='created_at',
+        auto_now_add=True
+        )
+    
+    def __str__(self):
+        return self.id
+    
+    class Meta:
+        db_table = 'cart_history'
+    
     
