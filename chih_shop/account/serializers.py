@@ -48,6 +48,9 @@ class ChangePasswordSerializer(serializers.Serializer):
     new_password2 = serializers.CharField(max_length=128, write_only=True, required=True)
 
     def validate_old_password(self, value):
+        """
+        rest_framework serializers.py 394 line explain that how validate_method works
+        """
         user = self.context['request'].user
         if not user.check_password(value):
             raise serializers.ValidationError(
