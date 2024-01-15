@@ -1,6 +1,17 @@
 from django.urls import path
-from . import views
+from account import views
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'', views.AccountsView)
 
 urlpatterns = [
-    path('', views.test_check)
+    path('test', views.test_check),
+    path('register/', views.CreateAccount.as_view()),
+    path('logout/', views.LogoutView.as_view()),
+    # path('', views.AccountsView.as_view()),
 ]
+
+
+urlpatterns += router.urls
