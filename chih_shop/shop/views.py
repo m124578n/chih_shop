@@ -15,6 +15,10 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'create':
             return CreateProductSerializer
+        if self.action == 'update':
+            return CreateProductSerializer
+        if self.action == 'partial_update':
+            return CreateProductSerializer
         return super().get_serializer_class()
 
     def perform_create(self, serializer):
