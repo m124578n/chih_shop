@@ -1,5 +1,6 @@
 from account.models import Account
 from rest_framework import serializers
+from django.contrib.auth.password_validation import validate_password
 
 
 class AccountCreateSerializer(serializers.HyperlinkedModelSerializer):
@@ -35,3 +36,16 @@ class AccountSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_sex(self, obj):
         return obj.get_sex_display()
+    
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = Account
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+    class Meta:
+        model = Account
+        fields = ["old_password", "new_password"]
