@@ -34,7 +34,7 @@ class Cart(models.Model):
         )
     
     def __str__(self):
-        return self.id
+        return self.name
     
     class Meta:
         db_table = 'cart'
@@ -58,7 +58,7 @@ class CartHistory(models.Model):
         )
     
     def __str__(self):
-        return self.id
+        return self.name
     
     class Meta:
         db_table = 'cart_history'

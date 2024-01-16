@@ -34,7 +34,7 @@ class Order(models.Model):
         )
     
     def __str__(self):
-        return self.id
+        return self.owner
     
     class Meta:
         db_table = 'order'
@@ -83,7 +83,7 @@ class OrderHistory(models.Model):
         )
 
     def __str__(self):
-        return self.id
+        return self.owner
     
     class Meta:
         db_table = 'order_history'

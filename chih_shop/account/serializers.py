@@ -1,4 +1,5 @@
 from account.models import Account
+from cart.models import Cart
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
@@ -19,6 +20,12 @@ class AccountCreateSerializer(serializers.HyperlinkedModelSerializer):
                 is_superuser=validated_data['is_superuser'],
                 is_staff=validated_data['is_staff'],
             )
+        ### change this to django signal
+        # when account register, add a default shopping cart for him.
+        # Cart.objects.create(
+        #     name='default shopping cart',
+        #     owner=user
+        #     )
         return user
 
     class Meta:
