@@ -35,7 +35,7 @@ class AccountsView(viewsets.ModelViewSet):
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-class CreateAccount(CreateAPIView):
+class CreateAccountView(CreateAPIView):
     model = Account
     permission_classes = [
         permissions.AllowAny # Or anon users can't register
